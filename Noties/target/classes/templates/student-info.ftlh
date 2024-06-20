@@ -38,6 +38,20 @@
     <h1 style="text-align: center">${student.title}</h1>
     <h1 style="text-align: center">${student.tag}</h1>
     <hr>
+
+
+    <#if notice?has_content>
+        <#list notice as singleNotice>
+            <div>
+                <p><b>${singleNotice.title}</b><p>  </p><p>${singleNotice.description}</p> <a href="/notice/${singleNotice.id}">Подробнее...</a></p>
+            </div>
+        </#list>
+    <#else>
+        <h3>Заметок нет</h3>
+    </#if>
+
+
+
     <div class="card text-white bg-dark my-3 product">
         <div class="card-top">
 
@@ -46,7 +60,22 @@
             <form action="/student/delete/${student.id}" method="post">
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 <button type="submit" class="btn btn-danger m-3">Удалить</button>
+                <button class="btn btn-light my-2 my-sm-0" type="button" onclick="window.location.href = '/'">Назад</button>
             </form>
         </div>
     </div>
+
+    <form action="/notice/create" method="post">
+        <div class="form-group">
+            <label for="editTitle">Дата:</label><br>
+            <input type="text" id="editTitle" name="title"}><br><br>
+        </div>
+        <div class="form-group">
+            <label for="editDescription">Заметка:</label><br>
+            <textarea id="editDescription" name="description"></textarea><br><br>
+        </div>
+        <input type="submit" style="width: 100%" class="btn btn-dark"value="Создать заметку">
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+    </form>
+
 </@t.template>

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface notiesRepository extends JpaRepository<Notice, Long> {
-    List<Notice> findByTitle(String title);
+    List<Notice> findByTitle(String title2);
 }

@@ -44,4 +44,5 @@
         <input type="submit" style="width: 100%" class="btn btn-dark"value="Создать заметку">
         <input type="hidden" name="_csrf" value="${_csrf.token}">
     </form>
+
 </@t.template>

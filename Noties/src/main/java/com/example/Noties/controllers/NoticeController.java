@@ -26,7 +26,7 @@ public class NoticeController {
     @PostMapping("/notice/create")
     public String createnotice(Notice notice) {
         noticeService.savenotice(notice);
-        return "redirect:/notice";
+        return "redirect:/";
     }
 
     @PostMapping("/notice/delete/{id}")

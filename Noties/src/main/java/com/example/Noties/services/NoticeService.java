@@ -16,9 +16,9 @@ import java.util.List;
 public class NoticeService {
     private final notiesRepository notiesRepository;
 
-    public List<Notice> listNoties(String title) {
-        if (title != null) {
-            return notiesRepository.findByTitle(title);
+    public List<Notice> listNoties(String title2) {
+        if (title2 != null) {
+            return notiesRepository.findByTitle(title2);
         } else {
             return notiesRepository.findAll();
         }

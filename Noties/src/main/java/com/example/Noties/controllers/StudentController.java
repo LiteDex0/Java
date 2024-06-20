@@ -1,6 +1,7 @@
 package com.example.Noties.controllers;
 
 import com.example.Noties.models.Student;
+import com.example.Noties.services.NoticeService;
 import com.example.Noties.services.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentService studentService;
+    private final NoticeService noticeService;
 
     @GetMapping("/")
     public String products(@RequestParam(name = "title", required = false) String title, Principal principal, Model model) {
@@ -27,9 +29,10 @@ public class StudentController {
     }
 
     @GetMapping("/student/{id}")
-    public String productInfo(@PathVariable Long id, Model model,Principal principal) {
+    public String productInfo(@PathVariable Long id, Model model,String title2, Principal principal) {
         Student student = studentService.getStudentById(id);
         model.addAttribute("user", studentService.getUserByPrincipal(principal));
+        model.addAttribute("notice", noticeService.listNoties(title2));
         model.addAttribute("student", student);
         model.addAttribute("images", student.getImages());
         return "student-info";
